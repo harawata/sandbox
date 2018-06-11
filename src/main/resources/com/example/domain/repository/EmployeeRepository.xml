@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.domain.repository.EmployeeRepository">
 
-    <select id="findAllByIds" resultMap="employeeMapHelper">
+    <select id="findAllByIds" resultMap="employeeMap">
         SELECT
           e.id employeeId,
           e.name employeeName,
@@ -45,11 +45,6 @@
             #{id}
           </foreach>
     </select>
-
-    <resultMap id="employeeMapHelper" type="MappingHelper">
-        <id property="key" column="employeeId" javaType="String"/>
-        <association property="value" resultMap="employeeMap"/>
-    </resultMap>
 
     <resultMap id="employeeMap" type="EmployeeEntity">
         <id property="id" column="employeeId"/>

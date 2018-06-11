@@ -1,7 +1,6 @@
 package com.example.web;
 
 import com.example.domain.model.EmployeeEntity;
-import com.example.domain.model.MappingHelper;
 import com.example.domain.repository.EmployeeRepository;
 import com.example.domain.service.BenchmarkService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +23,7 @@ public class SandboxRestController {
 
     @RequestMapping("/mybatisToMap")
     public ResponseEntity<Map> mybatisToMap() {
-        List<MappingHelper<Integer, EmployeeEntity>> mapperList = employeeRepository.findAllByIds(Arrays.asList(1, 2));
-        Map<Integer, EmployeeEntity> employeeMap = MappingHelper.toMap(mapperList);
+        Map<Integer, EmployeeEntity> employeeMap = employeeRepository.findAllByIds(Arrays.asList(1, 2));
         return ResponseEntity.ok().body(employeeMap);
     }
 
